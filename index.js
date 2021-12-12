@@ -26,6 +26,18 @@ function signUp(){
     });
 }
 
+function verifyEmail(){
+const verifyEmail = () => {
+    const user = auth.currentUser
+    user.sendEmailVerification()
+        .then(() => {
+            errorHandler({ message: "Email is sent.\nCheck your Mail's." }, true)
+        })
+        .catch(err => {
+            errorHandler(err)
+        })
+}
+
 function forgotPass(){
     const email = document.getElementById("email").value
     firebase.auth().sendPasswordResetEmail(email)
